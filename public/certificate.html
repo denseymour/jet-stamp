@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccination Certificate - Jet Stamp</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      .container { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header no-print">
+      <h1>💉 Jet Stamp</h1>
+      <p class="subtitle">Digital Vaccination Certificates</p>
+    </header>
+
+    <div id="loadingMessage" class="card">
+      <p>Loading certificate...</p>
+    </div>
+
+    <div id="errorMessage" class="card error-message" style="display: none;">
+      <h2>Certificate Not Found</h2>
+      <p>The certificate you're looking for doesn't exist or has been removed.</p>
+    </div>
+
+    <div id="certificateContent" style="display: none;">
+      <div class="certificate-card">
+        <div class="certificate-header">
+          <h1>Vaccination Certificate</h1>
+          <p class="certificate-subtitle">Digital Veterinary Vaccination Record</p>
+          <p class="certificate-id">Certificate ID: <span id="certId"></span></p>
+        </div>
+
+        <div class="certificate-body">
+          <div class="info-section">
+            <h3>Pet Information</h3>
+            <div class="info-row">
+              <span class="label">Name:</span>
+              <span class="value" id="petName"></span>
+            </div>
+            <div class="info-row">
+              <span class="label">Type:</span>
+              <span class="value" id="petType"></span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <h3>Vaccination Details</h3>
+            <div class="info-row">
+              <span class="label">Vaccine Type:</span>
+              <span class="value" id="vaccineType"></span>
+            </div>
+            <div class="info-row">
+              <span class="label">Date Administered:</span>
+              <span class="value" id="dateAdministered"></span>
+            </div>
+            <div class="info-row" id="nextDueDateRow" style="display: none;">
+              <span class="label">Next Due Date:</span>
+              <span class="value" id="nextDueDate"></span>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <h3>Veterinarian Information</h3>
+            <div class="info-row">
+              <span class="label">Name:</span>
+              <span class="value" id="vetName"></span>
+            </div>
+            <div class="info-row">
+              <span class="label">License Number:</span>
+              <span class="value" id="licenseNumber"></span>
+            </div>
+            <div class="info-row" id="clinicNameRow" style="display: none;">
+              <span class="label">Clinic:</span>
+              <span class="value" id="clinicName"></span>
+            </div>
+          </div>
+
+          <div class="qr-section">
+            <p class="qr-label">Scan to verify</p>
+            <img id="qrCode" src="" alt="QR Code">
+          </div>
+
+          <div class="certificate-footer">
+            <p>Issued: <span id="issuedDate"></span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-group no-print" style="margin-top: 20px;">
+        <button id="downloadPdfBtn" class="btn btn-primary">Download as PDF</button>
+        <button id="shareLinkBtn" class="btn btn-secondary">Share Link</button>
+        <button id="printBtn" class="btn btn-secondary">Print</button>
+      </div>
+    </div>
+
+    <footer class="footer no-print">
+      <p><a href="/vet">Issue New Certificate</a></p>
+    </footer>
+  </div>
+
+  <script src="/certificate.js"></script>
+</body>
+</html>
